@@ -23,3 +23,23 @@ export const getBrowserInfo = () => {
   const version = match[2];
   return { name, version };
 };
+
+/**
+ * 格式化错误消息
+ * 
+ * @param {any} err - 错误对象
+ * @returns {string} 格式化后的错误字符串
+ */
+export const formatErrorMessage = (err: any): string => {
+  if (err instanceof Error) {
+    return err.message;
+  }
+  if (typeof err === 'string') {
+    return err;
+  }
+  try {
+    return JSON.stringify(err);
+  } catch {
+    return String(err);
+  }
+};
