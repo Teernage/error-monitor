@@ -28,6 +28,7 @@ export const sendErrorData = (errorData: Record<string, any>, url: string) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dataToSend),
+      keepalive: true, // 即使页面关闭也能发送请求，作用类似 sendBeacon
     }).catch((error) => console.error('Error reporting failed:', error));
   }
 };
